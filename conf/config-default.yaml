@@ -1,29 +1,29 @@
 #
-# ********************************
-# * Persevere Lowell config file *
-# ********************************
-#
-# NOTE: Carefully read the documentation and best practices to
+# This is the default configuration file. It allows all users to do anything,
+# please read carefully the documentation and best practices to
 # improve security.
 #
-# Do not configure host and port under `listen` in this file
-# as it will be ignored when using docker.
-# see https://verdaccio.org/docs/en/docker#docker-and-custom-port-configuration
-#
 # Look here for more config file examples:
-# https://github.com/verdaccio/verdaccio/tree/5.x/conf
+# https://github.com/verdaccio/verdaccio/tree/5.x/packages/config/src/conf/default.yaml
 #
 # Read about the best practices
 # https://verdaccio.org/docs/best
 
 # path to a directory with all packages
-storage: /verdaccio/storage/data
-# path to a directory with plugins to include
-plugins: /verdaccio/plugins
+storage: ./storage
+# path to a directory with plugins to include, the plugins folder has the higher priority for loading plugins
+# disable this folder to avoid warnings if is not used
+# plugins: ./plugins
 
 # https://verdaccio.org/docs/webui
 web:
   title: Verdaccio
+  # custom colors for header background and font
+  # primaryColor: "#4b5e40"
+  # custom logos and favicon
+  # logo: ./path/to/logo.png
+  # logoDark: ./path/to/logoDark.png
+  # favicon: ./path/to/favicon.ico
   # comment out to disable gravatar support
   # gravatar: false
   # by default packages are ordercer ascendant (asc|desc)
@@ -41,6 +41,7 @@ web:
   # showSearch: true
   # showRaw: true
   # showDownloadTarball: true
+  # showUplinks: true
   #  HTML tags injected after manifest <scripts/>
   # scriptsBodyAfter:
   #    - '<script type="text/javascript" src="https://my.company.com/customJS.min.js"></script>'
@@ -58,14 +59,10 @@ web:
 # https://verdaccio.org/docs/configuration#authentication
 auth:
   htpasswd:
-    file: /verdaccio/storage/htpasswd
-    # Maximum amount of users allowed to register, defaults to "+infinity".
+    file: ./htpasswd
+    # Maximum amount of users allowed to register, defaults to "+inf".
     # You can set this to -1 to disable registration.
     # max_users: 1000
-    # Hash algorithm, possible options are: "bcrypt", "md5", "sha1", "crypt".
-    algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations
-    # Rounds number for "bcrypt", will be ignored for other algorithms.
-    rounds: 10
 
 # https://verdaccio.org/docs/configuration#uplinks
 # a list of other known repositories we can talk to
@@ -77,87 +74,12 @@ uplinks:
 # https://verdaccio.org/docs/protect-your-dependencies/
 # https://verdaccio.org/docs/configuration#packages
 packages:
-  '@persevere*/*':
+  '@*/*':
     # scoped packages
     access: $all
     publish: $authenticated
     unpublish: $authenticated
-
-  'persevere-*':
-    access: $all
-    publish: $authenticated
-    unpublish: $authenticated
-
-  'react':
-    access: $all
-    publish: $authenticated
     proxy: npmjs
-
-  'react-dom':
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-  
-  'next': 
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  'typescript': 
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "@types/node":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "@types/react":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "@types/react-dom":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "@types/prop-types":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "@vitejs/plugin-react-swc":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "eslint": 
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "eslint-plugin-react":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "eslint-plugin-react-hooks":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
-  "eslint-plugin-react-refresh":
-    access: $all
-    publish: $authenticated
-    proxy: npmjs 
-
-  "vite": 
-    access: $all
-    publish: $authenticated
-    proxy: npmjs
-
 
   '**':
     # allow all users (including non-authenticated users) to read and
@@ -167,14 +89,13 @@ packages:
     # and three keywords: "$all", "$anonymous", "$authenticated"
     access: $all
 
-    # allow all known users to publish/publish packages
+    # allow all known users to publish/unpublish packages
     # (anyone can register by default, remember?)
     publish: $authenticated
     unpublish: $authenticated
 
     # if package is not available locally, proxy requests to 'npmjs' registry
-    # proxy: npmjs
-
+    proxy: npmjs
 
 # To improve your security configuration and  avoid dependency confusion
 # consider removing the proxy property for private packages
@@ -186,13 +107,20 @@ packages:
 # WORKAROUND: Through given configuration you can workaround following issue https://github.com/verdaccio/verdaccio/issues/301. Set to 0 in case 60 is not enough.
 server:
   keepAliveTimeout: 60
+  # The pluginPrefix replaces the default plugins prefix which is `verdaccio`, please don't include `-`. If `something` is provided
+  # the resolve package will be `something-xxxx`.
+  # pluginPrefix: something
+  # A regex for the password validation /.{3}$/ (3 characters min)
+  # An example to limit to 10 characters minimum
+  # passwordValidationRegex: /.{10}$/
   # Allow `req.ip` to resolve properly when Verdaccio is behind a proxy or load-balancer
   # See: https://expressjs.com/en/guide/behind-proxies.html
   # trustProxy: '127.0.0.1'
 
 # https://verdaccio.org/docs/configuration#offline-publish
-publish:
-  allow_offline: false
+# publish:
+#   allow_offline: false
+#   check_owner: false
 
 # https://verdaccio.org/docs/configuration#url-prefix
 # url_prefix: /verdaccio/
@@ -210,8 +138,6 @@ publish:
 # security:
 #   api:
 #     legacy: true
-#     # recomended set to true for older installations
-#     migrateToSecureLegacySignature: true
 #     jwt:
 #       sign:
 #         expiresIn: 29d
@@ -268,6 +194,8 @@ log: { type: stdout, format: pretty, level: http }
 #experiments:
 #  # support for npm token command
 #  token: false
+#  # disable writing body size to logs, read more on ticket 1912
+#  bytesin_off: false
 #  # enable tarball URL redirect for hosting tarball with a different server, the tarball_url_redirect can be a template string
 #  tarball_url_redirect: 'https://mycdn.com/verdaccio/${packageName}/${filename}'
 #  # the tarball_url_redirect can be a function, takes packageName and filename and returns the url, when working with a js configuration file
@@ -277,6 +205,6 @@ log: { type: stdout, format: pretty, level: http }
 #  }
 
 # translate your registry, api i18n not available yet
-# i18n:
-# list of the available translations https://github.com/verdaccio/verdaccio/blob/master/packages/plugins/ui-theme/src/i18n/ABOUT_TRANSLATIONS.md
-#   web: en-US
+i18n:
+  # list of the available translations https://github.com/verdaccio/verdaccio/blob/master/packages/plugins/ui-theme/src/i18n/ABOUT_TRANSLATIONS.md
+  web: en-US

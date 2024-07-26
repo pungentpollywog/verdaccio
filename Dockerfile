@@ -5,4 +5,5 @@ WORKDIR /opt/verdaccio
 ADD ./conf/config.yaml . 
 
 EXPOSE 4873
-CMD ["verdaccio"]
+
+CMD verdaccio --listen http://0.0.0.0:4873

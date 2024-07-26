@@ -5,13 +5,13 @@
 ### Run Verdaccio (with Docker Compose)
 
 ```sh 
- docker compose up --build
+ docker compose up --build -d
 ```
 
 ... or ...
 
 ```sh 
-docker compose build --no-cache && docker compose up
+docker compose build --no-cache && docker compose up -d
 ```
 
 
