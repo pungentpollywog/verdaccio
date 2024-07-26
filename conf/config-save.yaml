@@ -1,0 +1,2871 @@
+#
+# -----------------------------------
+# Persevere Lowell custom config file
+# -----------------------------------
+# 
+# Please read carefully the documentation and best practices to
+# improve security.
+#
+# Do not configure host and port under `listen` in this file
+# as it will be ignored when using docker.
+# see https://verdaccio.org/docs/en/docker#docker-and-custom-port-configuration
+#
+# Look here for more config file examples:
+# https://github.com/verdaccio/verdaccio/tree/5.x/conf
+#
+# Read about the best practices
+# https://verdaccio.org/docs/best
+
+# path to a directory with all packages
+storage: /verdaccio/storage/data
+# path to a directory with plugins to include
+plugins: /verdaccio/plugins
+
+# https://verdaccio.org/docs/webui
+web:
+  title: Verdaccio
+  # comment out to disable gravatar support
+  # gravatar: false
+  # by default packages are ordercer ascendant (asc|desc)
+  # sort_packages: asc
+  # convert your UI to the dark side
+  # darkMode: true
+  # html_cache: true
+  # by default all features are displayed
+  # login: true
+  # showInfo: true
+  # showSettings: true
+  # In combination with darkMode you can force specific theme
+  # showThemeSwitch: true
+  # showFooter: true
+  # showSearch: true
+  # showRaw: true
+  # showDownloadTarball: true
+  #  HTML tags injected after manifest <scripts/>
+  # scriptsBodyAfter:
+  #    - '<script type="text/javascript" src="https://my.company.com/customJS.min.js"></script>'
+  #  HTML tags injected before ends </head>
+  #  metaScripts:
+  #    - '<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>'
+  #    - '<script type="text/javascript" src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js"></script>'
+  #    - '<meta name="robots" content="noindex" />'
+  #  HTML tags injected first child at <body/>
+  #  bodyBefore:
+  #    - '<div id="myId">html before webpack scripts</div>'
+  #  Public path for template manifest scripts (only manifest)
+  #  publicPath: http://somedomain.org/
+
+# https://verdaccio.org/docs/configuration#authentication
+auth:
+  htpasswd:
+    file: /verdaccio/storage/htpasswd
+    # Maximum amount of users allowed to register, defaults to "+infinity".
+    # You can set this to -1 to disable registration.
+    # max_users: 1000
+    # Hash algorithm, possible options are: "bcrypt", "md5", "sha1", "crypt".
+    # algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations
+    # Rounds number for "bcrypt", will be ignored for other algorithms.
+    # rounds: 10
+
+# https://verdaccio.org/docs/configuration#uplinks
+# a list of other known repositories we can talk to
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+
+# Learn how to protect your packages
+# https://verdaccio.org/docs/protect-your-dependencies/
+# https://verdaccio.org/docs/configuration#packages
+packages:
+  "@persevere/*":
+    # scoped packages
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+
+  react:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  loose-envify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  js-tokens:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  react-dom:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  scheduler:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/react":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/prop-types":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  csstype:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/react-dom":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@vitejs/plugin-react":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/core":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@ampproject/remapping":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@jridgewell/gen-mapping":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@jridgewell/set-array":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@jridgewell/sourcemap-codec":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@jridgewell/trace-mapping":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@jridgewell/resolve-uri":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/code-frame":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/highlight":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-validator-identifier":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  chalk:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  picocolors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/generator":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/types":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-string-parser":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  to-fast-properties:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  jsesc:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-compilation-targets":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/compat-data":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-validator-option":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  browserslist:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  caniuse-lite:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  electron-to-chromium:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  node-releases:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  update-browserslist-db:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  escalade:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  lru-cache:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  semver:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-module-transforms":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-environment-visitor":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-module-imports":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-simple-access":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-split-export-declaration":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helpers":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/template":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/parser":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/traverse":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-function-name":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-hoist-variables":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  debug:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ms:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  globals:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  convert-source-map:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  gensync:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  json5:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/plugin-transform-react-jsx-self":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/helper-plugin-utils":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@babel/plugin-transform-react-jsx-source":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/babel__core":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/babel__generator":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/babel__template":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/babel__traverse":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  react-refresh:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  eslint:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@eslint-community/eslint-utils":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  eslint-visitor-keys:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@eslint-community/regexpp":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@eslint/config-array":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@eslint/object-schema":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  minimatch:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  brace-expansion:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  balanced-match:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@eslint/eslintrc":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ajv:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fast-deep-equal:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  json-schema-traverse:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  require-from-string:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  uri-js:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  punycode:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  espree:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  acorn:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  acorn-jsx:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ignore:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  import-fresh:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  parent-module:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  callsites:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  resolve-from:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  js-yaml:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  argparse:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  strip-json-comments:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@eslint/js":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@humanwhocodes/module-importer":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@humanwhocodes/retry":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@nodelib/fs.walk":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@nodelib/fs.scandir":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@nodelib/fs.stat":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  run-parallel:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  queue-microtask:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fastq:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  reusify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cross-spawn:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  path-key:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  shebang-command:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  shebang-regex:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  which:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  isexe:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  escape-string-regexp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  eslint-scope:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  esrecurse:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  estraverse:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  esquery:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  esutils:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  file-entry-cache:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  flat-cache:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  flatted:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  keyv:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  json-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  find-up:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  locate-path:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  p-locate:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  p-limit:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  yocto-queue:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  path-exists:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unicorn-magic:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  glob-parent:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-glob:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-extglob:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  imurmurhash:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-path-inside:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  json-stable-stringify-without-jsonify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  levn:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  prelude-ls:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  type-check:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  lodash.merge:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  natural-compare:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  optionator:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  deep-is:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  word-wrap:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fast-levenshtein:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fastest-levenshtein:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  strip-ansi:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ansi-regex:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  text-table:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  eslint-plugin-react:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array-includes:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  call-bind:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-define-property:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  get-intrinsic:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-errors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  function-bind:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  has-proto:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  has-symbols:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  hasown:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  set-function-length:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  define-data-property:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  gopd:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  has-property-descriptors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  define-properties:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object-keys:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-abstract:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array-buffer-byte-length:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-array-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  arraybuffer.prototype.slice:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-shared-array-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  available-typed-arrays:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  possible-typed-array-names:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  data-view-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-data-view:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-typed-array:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  which-typed-array:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  for-each:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-callable:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  has-tostringtag:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  data-view-byte-length:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  data-view-byte-offset:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-object-atoms:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-set-tostringtag:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-to-primitive:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-date-object:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-symbol:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  function.prototype.name:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  functions-have-names:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  get-symbol-description:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  globalthis:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  internal-slot:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  side-channel:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object-inspect:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-negative-zero:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-regex:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-string:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-weakref:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object.assign:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regexp.prototype.flags:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  set-function-name:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  safe-array-concat:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  isarray:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  safe-regex-test:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string.prototype.trim:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string.prototype.trimend:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string.prototype.trimstart:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  typed-array-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  typed-array-byte-length:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  typed-array-byte-offset:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  typed-array-length:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unbox-primitive:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  has-bigints:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  which-boxed-primitive:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-bigint:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-boolean-object:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-number-object:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array.prototype.findlast:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-shim-unscopables:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array.prototype.flatmap:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array.prototype.toreversed:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array.prototype.tosorted:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  doctrine:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  es-iterator-helpers:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  iterator.prototype:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  reflect.getprototypeof:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  which-builtin-type:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-async-function:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-finalizationregistry:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-generator-function:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  which-collection:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-map:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-set:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-weakmap:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-weakset:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  jsx-ast-utils:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array.prototype.flat:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object.values:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object.entries:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object.fromentries:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object.hasown:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  prop-types:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  object-assign:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  react-is:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  resolve:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-core-module:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  path-parse:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  supports-preserve-symlinks-flag:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string.prototype.matchall:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  eslint-plugin-react-hooks:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  eslint-plugin-react-refresh:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  vite:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  rollup:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@types/estree":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  esbuild:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  postcss:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  nanoid:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  source-map-js:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fsevents:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  create-vite:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ansi-styles:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  supports-color:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  color-convert:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  color-name:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  graphemer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  'fast-json-stable-stringify':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  rimraf:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  yallist:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  concat-map:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  glob:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  'fs.realpath':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  inflight:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  inherits:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  once: 
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  'path-is-absolute':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  wrappy:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  'has-flag':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  'type-fest':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  express:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  qs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  depd:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  etag:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  send:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mime:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fresh:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  destroy:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  statuses:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  encodeurl:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  escape-html:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  http-errors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  setprototypeof:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  toidentifier:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  on-finished:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ee-first:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  range-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  vary:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cookie:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  accepts:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mime-types:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mime-db:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  negotiator:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  methods:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  type-is:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  media-typer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  parseurl:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  proxy-addr:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  forwarded:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ipaddr.js:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  body-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  bytes:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unpipe:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  raw-body:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  iconv-lite:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  safer-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  content-type:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  safe-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  utils-merge:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  finalhandler:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  serve-static:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  array-flatten:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  path-to-regexp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cookie-signature:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  merge-descriptors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  content-disposition:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  helmet:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  dotenv:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  chai:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  assertion-error:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  check-error:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  deep-eql:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  loupe:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  get-func-name:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pathval:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  chai-http:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  charset:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cookiejar:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-ip:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ip-regex:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  super-regex:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  function-timeout:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  time-span:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  convert-hrtime:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  superagent:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  component-emitter:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fast-safe-stringify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  form-data:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  asynckit:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  combined-stream:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  delayed-stream:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  formidable:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  dezalgo:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  asap:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  hexoid:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mocha:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ansi-colors:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  browser-stdout:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  chokidar:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  anymatch:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  normalize-path:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  picomatch:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  braces:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fill-range:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  to-regex-range:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-number:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-binary-path:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  binary-extensions:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  readdirp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  diff:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  foreground-child:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  signal-exit:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  jackspeak:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@isaacs/cliui':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string-width:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  emoji-regex:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  get-east-asian-width:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string-width-cjs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  strip-ansi-cjs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  wrap-ansi:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  wrap-ansi-cjs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  minipass:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  path-scurry:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  he:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  log-symbols:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-unicode-supported:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  serialize-javascript:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  randombytes:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  workerpool:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  yargs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cliui:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  get-caller-file:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  require-directory:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  y18n:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  yargs-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  yargs-unparser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  camelcase:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  decamelize:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  flat:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-plain-obj:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/preset-env':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  core-js-compat:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/preset-modules':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-proposal-unicode-property-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-create-regexp-features-plugin':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regexpu-core:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regenerate:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regenerate-unicode-properties:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regjsgen:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regjsparser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unicode-match-property-ecmascript:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unicode-canonical-property-names-ecmascript:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unicode-property-aliases-ecmascript:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  unicode-match-property-value-ecmascript:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-annotate-as-pure':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-dotall-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  babel-plugin-polyfill-corejs2:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-define-polyfill-provider':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  lodash.debounce:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  babel-plugin-polyfill-corejs3:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-for-of':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-skip-transparent-expression-wrappers':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-spread':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-classes':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-replace-supers':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-optimise-call-expression':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-member-expression-to-functions':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-import-meta':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-literals':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-json-strings':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  babel-plugin-polyfill-regenerator:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-new-target':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-parameters':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-dynamic-import':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-modules-amd':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-modules-umd':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-regenerator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regenerator-transform:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/runtime':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  regenerator-runtime:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-top-level-await':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-json-strings':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-object-super':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-sticky-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-async-generators':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-class-properties':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-block-scoping':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-destructuring':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-function-name':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-typeof-symbol':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-unicode-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-import-assertions':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-import-attributes':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-numeric-separator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-optional-chaining':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-duplicate-keys':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-dynamic-import':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-reserved-words':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-class-static-block':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-object-rest-spread':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-unicode-sets-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-arrow-functions':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-private-methods':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-create-class-features-plugin':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-unicode-escapes':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-class-properties':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-modules-commonjs':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-modules-systemjs':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-numeric-separator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-optional-chaining':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-property-literals':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-template-literals':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-export-namespace-from':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-async-to-generator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-remap-async-to-generator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-wrap-function':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-class-static-block':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-object-rest-spread':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-unicode-sets-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-optional-catch-binding':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-computed-properties':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-shorthand-properties':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-export-namespace-from':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-block-scoped-functions':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-optional-catch-binding':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-unicode-property-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-private-property-in-object':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-exponentiation-operator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/helper-builder-binary-assignment-operator-visitor':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-nullish-coalescing-operator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-proposal-private-property-in-object':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-syntax-logical-assignment-operators':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-async-generator-functions':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-member-expression-literals':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-private-property-in-object':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-nullish-coalescing-operator':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-logical-assignment-operators':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-transform-named-capturing-groups-regex':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-bugfix-firefox-class-in-computed-class-key':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@babel/register':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pirates:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  make-dir:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  clone-deep:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-plain-object:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  kind-of:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  shallow-clone:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  find-cache-dir:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  common-path-prefix:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pkg-dir:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  find-up-simple:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  source-map-support:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  buffer-from:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  source-map:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  jsdom:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  cssstyle:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  rrweb-cssom:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  data-urls:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  whatwg-mimetype:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  whatwg-url:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  tr46:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  webidl-conversions:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  decimal.js:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  html-encoding-sniffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  whatwg-encoding:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  http-proxy-agent:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  agent-base:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  https-proxy-agent:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-potential-custom-element-name:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  nwsapi:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  parse5:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  entities:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  saxes:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  xmlchars:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  symbol-tree:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  tough-cookie:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  psl:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  universalify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  url-parse:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  querystringify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  requires-port:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  w3c-xmlserializer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  xml-name-validator:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ws:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  nodemon:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  touch:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  undefsafe:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pstree.remy:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  ignore-by-default:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  simple-update-notifier:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  bcrypt:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@mapbox/node-pre-gyp':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  detect-libc:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  node-fetch:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  data-uri-to-buffer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fetch-blob:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  node-domexception:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  formdata-polyfill:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  nopt:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  abbrev:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  npmlog:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  gauge:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  aproba:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  wide-align:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  has-unicode:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  color-support:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  console-control-strings:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  set-blocking:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  are-we-there-yet:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  tar:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@isaacs/fs-minipass':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  chownr:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  minizlib:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mkdirp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  node-addon-api:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mongodb:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  bson:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@mongodb-js/saslprep':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  sparse-bitfield:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  memory-pager:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mongodb-connection-string-url:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@types/whatwg-url':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@types/webidl-conversions':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  socket.io:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  base64id:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  engine.io:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@types/cookie':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@types/cors':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@types/node':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  undici-types:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  engine.io-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  socket.io-adapter:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  socket.io-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@socket.io/component-emitter':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  socket.io-client:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  engine.io-client:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  xmlhttprequest-ssl:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  connect-mongo:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  kruptein:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  asn1.js:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  bn.js:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  minimalistic-assert:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  express-session:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  uid-safe:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  random-bytes:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  on-headers:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  passport:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  passport-strategy:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pause:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  passport-local:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  passport-github:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  passport-oauth2:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  base64url:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  oauth:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  uid2:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  passport.socketio:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  xtend:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-code-gen:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  constantinople:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  doctypes:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  js-stringify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-attrs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-runtime:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-error:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  void-elements:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  with:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  assert-never:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  babel-walk:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-filters:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  jstransformer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-promise:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  promise:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-walk:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-lexer:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  character-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-expression:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-linker:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-load:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-parser:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  token-stream:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pug-strip-comments:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mongoose:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  sift:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mpath:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  kareem:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  mquery:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  commondir:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  isobject:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  pify:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  delegates:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  readable-stream:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  string_decoder:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  util-deprecate:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  process-nextick-args:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  core-util-is:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-fullwidth-code-point:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  clone-regexp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  is-regexp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  fs-minipass:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  p-try:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  node-pre-gyp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  node-gyp:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  windows-build-tools:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  bcrypt-nodejs:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  bindings:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  react-router-dom:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  react-router:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  '@remix-run/router':
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  three:
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+
+  # '**':
+  #   # allow all users (including non-authenticated users) to read and
+  #   # publish all packages
+  #   #
+  #   # you can specify usernames/groupnames (depending on your auth plugin)
+  #   # and three keywords: "$all", "$anonymous", "$authenticated"
+  #   access: $all
+     '**':
+     access: $all
+     publish: $authenticated
+     # NOTE: no proxy here.
+
+  #   # allow all known users to publish/publish packages
+  #   # (anyone can register by default, remember?)
+  #   publish: $authenticated
+  #   unpublish: $authenticated
+
+  #   # if package is not available locally, proxy requests to 'npmjs' registry
+  #   proxy: npmjs
+  "*":
+    access: $all
+    publish: $authenticated
+    # proxy: none # Default policy for all other packages is not to proxy
+    # NOTE: no proxy here.
+
+# To improve your security configuration and  avoid dependency confusion
+# consider removing the proxy property for private packages
+# https://verdaccio.org/docs/best#remove-proxy-to-increase-security-at-private-packages
+
+# https://verdaccio.org/docs/configuration#server
+# You can specify HTTP/1.1 server keep alive timeout in seconds for incoming connections.
+# A value of 0 makes the http server behave similarly to Node.js versions prior to 8.0.0, which did not have a keep-alive timeout.
+# WORKAROUND: Through given configuration you can workaround following issue https://github.com/verdaccio/verdaccio/issues/301. Set to 0 in case 60 is not enough.
+server:
+  keepAliveTimeout: 60
+  # Allow `req.ip` to resolve properly when Verdaccio is behind a proxy or load-balancer
+  # See: https://expressjs.com/en/guide/behind-proxies.html
+  # trustProxy: '127.0.0.1'
+
+# https://verdaccio.org/docs/configuration#offline-publish
+# publish:
+#   allow_offline: false
+
+# https://verdaccio.org/docs/configuration#url-prefix
+# url_prefix: /verdaccio/
+# VERDACCIO_PUBLIC_URL='https://somedomain.org';
+# url_prefix: '/my_prefix'
+# // url -> https://somedomain.org/my_prefix/
+# VERDACCIO_PUBLIC_URL='https://somedomain.org';
+# url_prefix: '/'
+# // url -> https://somedomain.org/
+# VERDACCIO_PUBLIC_URL='https://somedomain.org/first_prefix';
+# url_prefix: '/second_prefix'
+# // url -> https://somedomain.org/second_prefix/'
+
+# https://verdaccio.org/docs/configuration#security
+# security:
+#   api:
+#     legacy: true
+#     # recomended set to true for older installations
+#     migrateToSecureLegacySignature: true
+#     jwt:
+#       sign:
+#         expiresIn: 29d
+#       verify:
+#         someProp: [value]
+#    web:
+#      sign:
+#        expiresIn: 1h # 1 hour by default
+#      verify:
+#         someProp: [value]
+
+# https://verdaccio.org/docs/configuration#user-rate-limit
+# userRateLimit:
+#   windowMs: 50000
+#   max: 1000
+
+# https://verdaccio.org/docs/configuration#max-body-size
+# max_body_size: 10mb
+
+# https://verdaccio.org/docs/configuration#listen-port
+# listen:
+# - localhost:4873            # default value
+# - http://localhost:4873     # same thing
+# - 0.0.0.0:4873              # listen on all addresses (INADDR_ANY)
+# - https://example.org:4873  # if you want to use https
+# - "[::1]:4873"                # ipv6
+# - unix:/tmp/verdaccio.sock    # unix socket
+
+# The HTTPS configuration is useful if you do not consider use a HTTP Proxy
+# https://verdaccio.org/docs/configuration#https
+# https:
+#   key: ./path/verdaccio-key.pem
+#   cert: ./path/verdaccio-cert.pem
+#   ca: ./path/verdaccio-csr.pem
+
+# https://verdaccio.org/docs/configuration#proxy
+# http_proxy: http://something.local/
+# https_proxy: https://something.local/
+
+# https://verdaccio.org/docs/configuration#notifications
+# notify:
+#   method: POST
+#   headers: [{ "Content-Type": "application/json" }]
+#   endpoint: https://usagge.hipchat.com/v2/room/3729485/notification?auth_token=mySecretToken
+#   content: '{"color":"green","message":"New package published: * {{ name }}*","notify":true,"message_format":"text"}'
+
+middlewares:
+  audit:
+    enabled: true
+
+# https://verdaccio.org/docs/logger
+# log settings
+log: { type: stdout, format: pretty, level: http }
+#experiments:
+#  # support for npm token command
+#  token: false
+#  # enable tarball URL redirect for hosting tarball with a different server, the tarball_url_redirect can be a template string
+#  tarball_url_redirect: 'https://mycdn.com/verdaccio/${packageName}/${filename}'
+#  # the tarball_url_redirect can be a function, takes packageName and filename and returns the url, when working with a js configuration file
+#  tarball_url_redirect(packageName, filename) {
+#    const signedUrl = // generate a signed url
+#    return signedUrl;
+#  }
+
+# translate your registry, api i18n not available yet
+# i18n:
+# list of the available translations https://github.com/verdaccio/verdaccio/blob/master/packages/plugins/ui-theme/src/i18n/ABOUT_TRANSLATIONS.md
+#   web: en-US
