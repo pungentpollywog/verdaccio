@@ -2736,6 +2736,31 @@ packages:
     access: $all
     publish: $authenticated
     proxy: npmjs 
+  "@fortawesome/fontawesome-svg-core":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@fortawesome/free-solid-svg-icons":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@fortawesome/free-regular-svg-icons":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@fortawesome/free-brands-svg-icons":  
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@fortawesome/react-fontawesome":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@fortawesome/fontawesome-common-types":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+
 
   "**":
     access: $all
