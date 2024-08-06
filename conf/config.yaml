@@ -2760,6 +2760,18 @@ packages:
     access: $all
     publish: $authenticated
     proxy: npmjs 
+  "localforage":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "match-sorter":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "sort-by":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
 
 
   "**":
