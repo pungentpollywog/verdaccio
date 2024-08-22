@@ -2772,6 +2772,19 @@ packages:
     access: $all
     publish: $authenticated
     proxy: npmjs 
+  "remove-accents":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "lie":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+  "immediate":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs       
+
 
 
   "**":
