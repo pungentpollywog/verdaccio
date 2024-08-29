@@ -2856,7 +2856,89 @@ packages:
     access: $all
     publish: $authenticated
     proxy: npmjs 
-        
+  "@emotion/styled":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@emotion/babel-plugin":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@emotion/is-prop-valid":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@emotion/react":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@emotion/serialize":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@emotion/use-insertion-effect-with-fallbacks":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "hoist-non-react-statics":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "@emotion/hash":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "babel-plugin-macros":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "find-root":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs   
+  "@emotion/unitless":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "cosmiconfig":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+  "@types/parse-json":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "parse-json":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "path-type":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+  "yaml":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "error-ex":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "json-parse-even-better-errors":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "lines-and-columns":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "is-arrayish":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+
+
+
 
   "**":
     access: $all
