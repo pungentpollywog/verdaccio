@@ -2783,9 +2783,80 @@ packages:
   "immediate":
     access: $all
     publish: $authenticated
-    proxy: npmjs       
-
-
+    proxy: npmjs    
+  "@mui/material":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "@mui/core-downloads-tracker":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "@mui/system":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "@mui/types":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+  "@mui/utils":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "@popperjs/core":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+  "@types/react-transition-group":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "clsx":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+  "react-transition-group":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@mui/private-theming":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs    
+  "@mui/styled-engine":     
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@emotion/cache":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@emotion/memoize":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs  
+  "@emotion/sheet":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs   
+  "@emotion/utils":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "@emotion/weak-memoize":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "stylis":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+  "dom-helpers":
+    access: $all
+    publish: $authenticated
+    proxy: npmjs 
+        
 
   "**":
     access: $all
